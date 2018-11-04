@@ -8,12 +8,21 @@ First of all need to get Composer - https://getcomposer.org/download/
 
 
 # How to run?
+Set permissions:
 ```
-sh chmod 777 vendor json-data #set permissions
-php composer.phar install #load vendors
-php index.php #run script (approx time: 2 mins)
-...
+sh chmod 777 vendor json-data
 ```
+
+Load vendors:
+```
+php composer.phar install
+```
+
+Run script (approx time: 2 mins):
+```
+php index.php
+```
+
 
 # That's all :)
 All data (_city.json_ and _department.json_) cached in json-data folder.
