@@ -9,9 +9,9 @@ First of all need to get Composer - https://getcomposer.org/download/
 
 # How to run?
 ```
-sh chmod 777 vendor json-data
-php composer.phar install
-php index.php
+sh chmod 777 vendor json-data #set permissions
+php composer.phar install #load vendors
+php index.php #run script (approx time: 2 mins)
 ...
 ```
 
