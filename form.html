@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form example</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<form>
+		<label for="novaposhta-city">City</label>
+		<input type="text" name="novaposhta-city" value="" id="novaposhta-city" placeholder="Please select city" />
+	</form>
+
+	<script>
+		let $inputText = $('#novaposhta-city');
+		let $placeHolder = $inputText.attr('placeholder');
+		let $selectBox = $('<select></select>');
+		$inputText.after($selectBox);
+		$inputText.remove();
+
+		$selectBox.attr({
+			'id': 'novaposhta-city',
+			'name': 'novaposhta-city',
+		});
+
+		$selectBox.append('<option selected="true" disabled>'+$placeHolder+'</option>');
+		$selectBox.prop('selectedIndex', 0);
+
+		$.getJSON('json-data/city.json', function (data) {
+		  $.each(data, function (key, value) {
+		    $selectBox.append(
+		    	$('<option></option>').attr('value', key).text(value)
+	    	);
+		  })
+		});
+	</script>
+</body>
+</html>
