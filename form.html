@@ -8,30 +8,72 @@
 	<form>
 		<label for="novaposhta-city">City</label>
 		<input type="text" name="novaposhta-city" value="" id="novaposhta-city" placeholder="Please select city" />
+		<label for="novaposhta-department">Department</label>
+		<input type="text" name="novaposhta-department" value="" id="novaposhta-department" placeholder="Please select department" />
 	</form>
 
 	<script>
-		let $inputText = $('#novaposhta-city');
-		let $placeHolder = $inputText.attr('placeholder');
-		let $selectBox = $('<select></select>');
-		$inputText.after($selectBox);
-		$inputText.remove();
+		let $inputTextCity = $('#novaposhta-city');
+		let $placeHolderCity = $inputTextCity.attr('placeholder');
+		let $selectBoxCity = $('<select></select>');
+		$inputTextCity.after($selectBoxCity);
+		$inputTextCity.remove();
 
-		$selectBox.attr({
+		$selectBoxCity.attr({
 			'id': 'novaposhta-city',
 			'name': 'novaposhta-city',
 		});
 
-		$selectBox.append('<option selected="true" disabled>'+$placeHolder+'</option>');
-		$selectBox.prop('selectedIndex', 0);
+		$selectBoxCity.append('<option selected="true" disabled>'+$placeHolderCity+'</option>');
+		$selectBoxCity.prop('selectedIndex', 0);
+
+		let $inputTextDep = $('#novaposhta-department');
+		let $placeHolderDep = $inputTextDep.attr('placeholder');
+		let $selectBoxDep = $('<select></select>');
+		$inputTextDep.after($selectBoxDep);
+		$inputTextDep.remove();
+
+		$selectBoxDep.attr({
+			'id': 'novaposhta-department',
+			'name': 'novaposhta-department',
+		});
+
+		$selectBoxDep.append('<option selected="true" disabled>'+$placeHolderDep+'</option>');
+		$selectBoxDep.prop('selectedIndex', 0);
 
 		$.getJSON('json-data/city.json', function (data) {
-		  $.each(data, function (key, value) {
-		    $selectBox.append(
-		    	$('<option></option>').attr('value', key).text(value)
-	    	);
-		  })
+			$.each(data, function (key, value) {
+				$selectBoxCity.append(
+					$('<option></option>')
+					.data('ref', key)
+					.attr('value', value)
+					.text(value)
+				);
+			});
+		});
+
+		let oDepartment = {};
+		$.getJSON('json-data/department.json', function(data){
+			oDepartment = data;
+		});
+
+		$('#novaposhta-city').on('change', function(){
+			let ref = $(this).find(':selected').data('ref');
+
+			$selectBoxDep.empty();
+			$.each(oDepartment[ref], function (key, value) {
+				$selectBoxDep.append(
+					$('<option></option>')
+					.data('ref', key)
+					.attr('value', value)
+					.text(value)
+				);
+			});
 		});
 	</script>
 </body>
 </html>
+
+
+
+
