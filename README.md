@@ -7,18 +7,24 @@ Data generator for NovaPoshta API. Retrieving data for select box: city list, de
 First of all need to get Composer - https://getcomposer.org/download/
 
 
-# How to run?
-Set permissions:
+# Preparation (3 steps)
+Step 1. Set permissions:
 ```
 sh chmod 777 vendor json-data
 ```
 
-Load vendors:
+Step 2. Load vendors:
 ```
 php composer.phar install
 ```
 
-Run script (approx time: 2 mins):
+Step 3. Put your own API key into conf.php.
+Api key could be generated in my account https://my.novaposhta.ua/
+
+
+# How to run?
+
+Just run script (approx time: 2 mins):
 ```
 php index.php
 ```
@@ -26,9 +32,9 @@ php index.php
 
 # That's all :)
 All data (_city.json_ and _department.json_) cached in json-data folder.
-Open file form.html in browser and check it.
+Open file _form.html_ in browser and check it.
 
 
 # Keep in mind
-If you open form.html localy in Google Chrome – could be problem with cross-domain loading.
+If you open _form.html_ localy in Google Chrome – could be problem with cross-domain loading.
 Just check in other browser or upload to your server.
